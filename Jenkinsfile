@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Jenkins Tool') {
             steps {
-                echo 'Jenkins Tool'
+                echo 'Tool Interface'
             }
         }
         stage('Build') { 
