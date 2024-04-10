@@ -19,38 +19,38 @@ public interface ToolController {
 
     @PostMapping("/tools/create")
     ResponseEntity<ToolOut> createTool (
-        @RequestHeader(required = true, name = "id-user") String idUser,
+        @RequestHeader(required = true, name = "Authorization") String key,
         @RequestBody(required = true) ToolIn in
     );
 
     @PutMapping("/tools/{id}")
     ResponseEntity<ToolOut> update (
-        @RequestHeader(required = true, name = "id-user") String idUser,
+        @RequestHeader(required = true, name = "Authorization") String key,
         @RequestBody(required = true) ToolIn in
     );
 
     @DeleteMapping("/tools/{id}")
     ResponseEntity<ToolOut> delete (
-        @RequestHeader(required = true, name = "id-user") String idUser,
+        @RequestHeader(required = true, name = "Authorization") String key,
         @RequestBody(required = true) ToolIn in
     );
 
     @GetMapping("/tools/{id}")
     ResponseEntity<ToolOut> getToolById (
-        @RequestHeader(required = true, name = "id-user") String idUser,
+        @RequestHeader(required = true, name = "Authorization") String key,
         @PathVariable(required = true) String id
     );
 
     @GetMapping("/tools/search/by-name")
     ResponseEntity<List<ToolOut>> findToolsByNameContaining (
-        @RequestHeader(required = true, name = "id-user") String idUser,
+        @RequestHeader(required = true, name = "Authorization") String key,
         @RequestParam(required = true) String name,
         @RequestParam(defaultValue = "name") String sortBy
     );
 
     @GetMapping("/tools/search/by-category")
     ResponseEntity<List<ToolOut>> findToolsByCategory (
-        @RequestHeader(required = true, name = "id-user") String idUser,
+        @RequestHeader(required = true, name = "Authorization") String key,
         @RequestParam(required = true) String category,
         @RequestParam(defaultValue = "name") String sortBy
     );
@@ -58,6 +58,6 @@ public interface ToolController {
 
     @GetMapping("/tools/all/sorted-by-date")
     ResponseEntity<List<ToolOut>> findAllToolsOrderedByCreationDateDesc (
-        @RequestHeader(required = true, name = "id-user") String idUser
+        @RequestHeader(required = true, name = "Authorization") String key
     );
 }
