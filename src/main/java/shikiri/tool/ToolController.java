@@ -56,7 +56,7 @@ public interface ToolController {
     );
 
 
-    @GetMapping("/tools/search/all-tools-sorted-by-name")
+    @GetMapping("/tools")
     ResponseEntity<List<ToolOut>> findOrderByName (
         @RequestHeader(required = true, name = "Authorization") String key
     );
