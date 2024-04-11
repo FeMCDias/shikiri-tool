@@ -41,7 +41,7 @@ public interface ToolController {
         @PathVariable(required = true) String id
     );
 
-    @GetMapping("/tools/search/by-name")
+    @GetMapping("/tools/search/by-name-containing")
     ResponseEntity<List<ToolOut>> findByNameContaining (
         @RequestHeader(required = true, name = "Authorization") String key,
         @RequestParam(required = true) String name,
@@ -56,7 +56,7 @@ public interface ToolController {
     );
 
 
-    @GetMapping("/tools/all/sorted-by-name")
+    @GetMapping("/tools/search/all-tools-sorted-by-name")
     ResponseEntity<List<ToolOut>> findOrderByName (
         @RequestHeader(required = true, name = "Authorization") String key
     );
