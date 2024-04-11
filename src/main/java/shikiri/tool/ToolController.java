@@ -56,8 +56,8 @@ public interface ToolController {
     );
 
 
-    @GetMapping("/tools/all/sorted-by-date")
-    ResponseEntity<List<ToolOut>> findAllOrderedByCreationDateDesc (
+    @GetMapping("/tools/all/sorted-by-name")
+    ResponseEntity<List<ToolOut>> findOrderByName (
         @RequestHeader(required = true, name = "Authorization") String key
     );
 }
