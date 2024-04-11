@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface ToolController {
 
     @PostMapping("/tools/create")
-    ResponseEntity<ToolOut> createTool (
+    ResponseEntity<ToolOut> create(
         @RequestHeader(required = true, name = "Authorization") String key,
         @RequestBody(required = true) ToolIn in
     );
@@ -32,24 +32,24 @@ public interface ToolController {
     @DeleteMapping("/tools/{id}")
     ResponseEntity<ToolOut> delete (
         @RequestHeader(required = true, name = "Authorization") String key,
-        @RequestBody(required = true) ToolIn in
+        @PathVariable(required = true) String id
     );
 
     @GetMapping("/tools/{id}")
-    ResponseEntity<ToolOut> getToolById (
+    ResponseEntity<ToolOut> getById (
         @RequestHeader(required = true, name = "Authorization") String key,
         @PathVariable(required = true) String id
     );
 
     @GetMapping("/tools/search/by-name")
-    ResponseEntity<List<ToolOut>> findToolsByNameContaining (
+    ResponseEntity<List<ToolOut>> findByNameContaining (
         @RequestHeader(required = true, name = "Authorization") String key,
         @RequestParam(required = true) String name,
         @RequestParam(defaultValue = "name") String sortBy
     );
 
     @GetMapping("/tools/search/by-category")
-    ResponseEntity<List<ToolOut>> findToolsByCategory (
+    ResponseEntity<List<ToolOut>> findByCategory (
         @RequestHeader(required = true, name = "Authorization") String key,
         @RequestParam(required = true) String category,
         @RequestParam(defaultValue = "name") String sortBy
@@ -57,7 +57,7 @@ public interface ToolController {
 
 
     @GetMapping("/tools/all/sorted-by-date")
-    ResponseEntity<List<ToolOut>> findAllToolsOrderedByCreationDateDesc (
+    ResponseEntity<List<ToolOut>> findAllOrderedByCreationDateDesc (
         @RequestHeader(required = true, name = "Authorization") String key
     );
 }
