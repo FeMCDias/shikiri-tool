@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,38 +22,37 @@ public interface ToolController {
         @RequestBody(required = true) ToolIn in
     );
 
-    @PutMapping("/tools/{id}")
+    @PutMapping("/tools")
     ResponseEntity<ToolOut> update (
         @RequestHeader(required = true, name = "Authorization") String key,
         @RequestBody(required = true) ToolIn in
     );
 
-    @DeleteMapping("/tools/{id}")
+    @DeleteMapping("/tools")
     ResponseEntity<ToolOut> delete (
         @RequestHeader(required = true, name = "Authorization") String key,
-        @PathVariable(required = true) String id
+        @RequestBody(required = true) String id
     );
 
-    @GetMapping("/tools/{id}")
+    @GetMapping("/tools")
     ResponseEntity<ToolOut> getById (
         @RequestHeader(required = true, name = "Authorization") String key,
-        @PathVariable(required = true) String id
+        @RequestBody(required = true) String id
     );
 
     @GetMapping("/tools/search/by-name-containing")
     ResponseEntity<List<ToolOut>> findByNameContaining (
         @RequestHeader(required = true, name = "Authorization") String key,
-        @RequestParam(required = true) String name,
+        @RequestBody(required = true) String name,
         @RequestParam(defaultValue = "name") String sortBy
     );
 
     @GetMapping("/tools/search/by-category")
     ResponseEntity<List<ToolOut>> findByCategory (
         @RequestHeader(required = true, name = "Authorization") String key,
-        @RequestParam(required = true) String category,
+        @RequestBody(required = true) String category,
         @RequestParam(defaultValue = "name") String sortBy
     );
-
 
     @GetMapping("/tools")
     ResponseEntity<List<ToolOut>> findOrderByName (
