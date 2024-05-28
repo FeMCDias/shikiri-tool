@@ -8,6 +8,8 @@ import lombok.experimental.Accessors;
 public record ToolOut (
     String id,
     String name,
+    String category,
+    String description,
     String userId
 ) {
     

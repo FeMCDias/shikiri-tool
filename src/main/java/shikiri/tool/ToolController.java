@@ -18,44 +18,41 @@ public interface ToolController {
 
     @PostMapping("/tools/create")
     ResponseEntity<ToolOut> create(
-        @RequestHeader(required = true, name = "Authorization") String key,
+        @RequestHeader(required = true, name = "id-user") String userId,
         @RequestBody(required = true) ToolIn in
     );
 
     @PutMapping("/tools")
     ResponseEntity<ToolOut> update (
-        @RequestHeader(required = true, name = "Authorization") String key,
         @RequestBody(required = true) ToolIn in
     );
 
     @DeleteMapping("/tools")
     ResponseEntity<ToolOut> delete (
-        @RequestHeader(required = true, name = "Authorization") String key,
         @RequestBody(required = true) String id
     );
 
-    @GetMapping("/tools")
+    @GetMapping("/tools/search/by-id")
     ResponseEntity<ToolOut> getById (
-        @RequestHeader(required = true, name = "Authorization") String key,
         @RequestBody(required = true) String id
     );
 
     @GetMapping("/tools/search/by-name-containing")
     ResponseEntity<List<ToolOut>> findByNameContaining (
-        @RequestHeader(required = true, name = "Authorization") String key,
         @RequestBody(required = true) String name,
+        @RequestHeader(required = true, name = "id-user") String userId,
         @RequestParam(defaultValue = "name") String sortBy
     );
 
     @GetMapping("/tools/search/by-category")
     ResponseEntity<List<ToolOut>> findByCategory (
-        @RequestHeader(required = true, name = "Authorization") String key,
         @RequestBody(required = true) String category,
+        @RequestHeader(required = true, name = "id-user") String userId,
         @RequestParam(defaultValue = "name") String sortBy
     );
 
-    @GetMapping("/tools")
+    @GetMapping("/tool/search/by-user-id")
     ResponseEntity<List<ToolOut>> findOrderByName (
-        @RequestHeader(required = true, name = "Authorization") String key
+        @RequestHeader(required = true, name = "id-user") String userId
     );
 }

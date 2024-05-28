@@ -8,8 +8,7 @@ import lombok.experimental.Accessors;
 public record ToolIn (
     String name,
     String category,
-    String description,
-    String userId
+    String description
 ) {
     
 }
